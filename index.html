@@ -3,351 +3,317 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TECH UP Cohort 1 · Ops Archive</title>
+    <title>KT cloud TECH UP 1기 운영 아카이브</title>
 
     <style>
-      :root{
-        --bg0:#070A12;
-        --bg1:#0B1230;
-        --card: rgba(255,255,255,0.06);
-        --card2: rgba(255,255,255,0.10);
-        --line: rgba(255,255,255,0.12);
-        --txt: rgba(255,255,255,0.92);
-        --muted: rgba(255,255,255,0.70);
-        --muted2: rgba(255,255,255,0.55);
-        --accent:#36D6E7;
-        --accent2:#7C5CFF;
-        --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      :root {
+        --bg0: #f7fbff;
+        --bg1: #ffffff;
+        --card: rgba(255, 255, 255, 0.9);
+        --line: rgba(15, 23, 42, 0.08);
+        --text: #0f172a;
+        --muted: rgba(15, 23, 42, 0.7);
+        --accent: #2bb7c6;
+        --accent2: #6b5cff;
+        --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
         --radius: 18px;
       }
 
-      *{ box-sizing:border-box; }
-      html,body{ height:100%; }
-      body{
-        margin:0;
-        color:var(--txt);
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
         font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-        line-height:1.6;
+        color: var(--text);
         background:
-          radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,0.28), transparent 60%),
-          radial-gradient(900px 500px at 80% 20%, rgba(54,214,231,0.20), transparent 60%),
-          radial-gradient(900px 600px at 50% 90%, rgba(54,214,231,0.10), transparent 60%),
+          radial-gradient(900px 500px at 12% 10%, rgba(107, 92, 255, 0.12), transparent 55%),
+          radial-gradient(900px 500px at 80% 18%, rgba(43, 183, 198, 0.12), transparent 55%),
           linear-gradient(180deg, var(--bg0), var(--bg1));
       }
 
-      .wrap{
-        max-width:1100px;
-        margin:0 auto;
-        padding:34px 20px 90px;
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 34px 20px 90px;
       }
 
       /* Header */
-      .hero{
-        border:1px solid var(--line);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-        border-radius: calc(var(--radius) + 6px);
-        padding:26px 22px;
+      .hero {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.85);
+        border-radius: calc(var(--radius) + 8px);
+        padding: 28px 22px;
         box-shadow: var(--shadow);
-        position:relative;
-        overflow:hidden;
       }
-      .hero:before{
-        content:"";
-        position:absolute;
-        inset:-2px;
-        background:
-          radial-gradient(700px 260px at 30% 0%, rgba(54,214,231,0.18), transparent 60%),
-          radial-gradient(700px 260px at 85% 20%, rgba(124,92,255,0.18), transparent 60%);
-        pointer-events:none;
-      }
-      .hero > *{ position:relative; }
-
-      .kicker{
-        display:inline-flex;
-        gap:10px;
-        align-items:center;
-        padding:7px 12px;
-        border:1px solid var(--line);
-        border-radius:999px;
-        background: rgba(0,0,0,0.18);
+      .kicker {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.75);
         color: var(--muted);
-        font-size:13px;
-        letter-spacing:0.2px;
+        font-size: 13px;
       }
-      .dot{
-        width:8px; height:8px; border-radius:999px;
+      .dot {
+        width: 8px; height: 8px; border-radius: 999px;
         background: linear-gradient(90deg, var(--accent), var(--accent2));
-        box-shadow: 0 0 18px rgba(54,214,231,0.35);
       }
-      h1{
-        margin:14px 0 10px;
-        font-size:34px;
-        line-height:1.15;
-        letter-spacing:-0.4px;
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 34px;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
       }
-      .subtitle{
-        margin:0;
-        color:var(--muted);
-        max-width: 70ch;
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        max-width: 76ch;
       }
 
       /* Section */
-      .section{
-        margin-top:28px;
-        padding:18px 16px 16px;
-        border:1px solid var(--line);
+      .section {
+        margin-top: 22px;
+        padding: 18px 16px 16px;
+        border: 1px solid var(--line);
         border-radius: var(--radius);
-        background: rgba(255,255,255,0.04);
+        background: rgba(255,255,255,0.72);
+        box-shadow: var(--shadow);
       }
-      .section-head{
-        display:flex;
-        align-items:flex-end;
-        justify-content:space-between;
-        gap:12px;
-        margin-bottom:10px;
+      .section-title {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.2px;
       }
-      .section-title{
-        margin:0;
-        font-size:20px;
-        letter-spacing:-0.2px;
-      }
-      .section-desc{
-        margin:6px 0 0;
-        color:var(--muted2);
-        font-size:14px;
+      .section-desc {
+        margin: 6px 0 12px;
+        color: var(--muted);
+        font-size: 14px;
       }
 
-      /* Carousel */
-      .carousel-wrap{
-        position:relative;
-        margin-top:12px;
-      }
-      .carousel{
-        display:flex;
-        gap:14px;
-        overflow-x:auto;
-        padding:10px 4px 14px;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
-      }
-      .carousel::-webkit-scrollbar{ height:10px; }
-      .carousel::-webkit-scrollbar-thumb{
-        background: rgba(255,255,255,0.18);
-        border-radius: 999px;
-      }
-      .card{
-        flex: 0 0 auto;
-        width: min(520px, 82vw);
-        scroll-snap-align:start;
+      /* Auto marquee */
+      .marquee {
+        position: relative;
+        overflow: hidden;
         border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.10);
-        background: rgba(255,255,255,0.05);
-        overflow:hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.65);
       }
-      .card img{
-        width:100%;
-        height: 340px;
+      .track {
+        display: flex;
+        gap: 14px;
+        width: max-content;
+        padding: 14px;
+        animation: scrollLeft 45s linear infinite;
+      }
+      /* hover 시 잠깐 멈추고 싶으면 아래 주석 해제
+      .marquee:hover .track { animation-play-state: paused; }
+      */
+
+      @keyframes scrollLeft {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+      }
+
+      .card {
+        flex: 0 0 auto;
+        width: 420px;
+        height: 280px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 22px rgba(15,23,42,0.10);
+        background: #fff;
+      }
+      .card img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        display:block;
-      }
-      @media (max-width: 520px){
-        .card img{ height: 260px; }
+        display: block;
       }
 
-      /* Carousel buttons */
-      .nav{
-        position:absolute;
-        top:50%;
-        transform: translateY(-50%);
-        width:40px;
-        height:40px;
-        border-radius:999px;
-        border:1px solid rgba(255,255,255,0.16);
-        background: rgba(0,0,0,0.35);
-        color: var(--txt);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        cursor:pointer;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.35);
-        user-select:none;
+      @media (max-width: 520px) {
+        h1 { font-size: 28px; }
+        .card { width: 78vw; height: 240px; }
       }
-      .nav:hover{ background: rgba(0,0,0,0.48); }
-      .nav:active{ transform: translateY(-50%) scale(0.98); }
-      .nav.left{ left: 6px; }
-      .nav.right{ right: 6px; }
 
-      /* Footer */
-      .footer{
-        margin-top:26px;
-        padding:18px 16px;
-        border:1px solid var(--line);
-        border-radius: var(--radius);
-        background: rgba(255,255,255,0.03);
-        color: var(--muted2);
-      }
-      .footer p{ margin:0 0 10px; }
-      .btns{
-        display:flex;
-        flex-wrap:wrap;
-        gap:10px;
-        margin-top:10px;
-      }
-      .btn{
-        display:inline-flex;
-        align-items:center;
-        gap:10px;
-        padding:10px 14px;
-        border-radius: 999px;
-        border:1px solid rgba(255,255,255,0.16);
-        background: rgba(255,255,255,0.06);
-        color: var(--txt);
-        text-decoration:none;
-        font-size:14px;
-      }
-      .btn.primary{
-        border-color: rgba(54,214,231,0.45);
-        background: linear-gradient(90deg, rgba(54,214,231,0.22), rgba(124,92,255,0.20));
-      }
-      .btn:hover{ background: rgba(255,255,255,0.09); }
-      .btn.primary:hover{
-        background: linear-gradient(90deg, rgba(54,214,231,0.30), rgba(124,92,255,0.28));
-      }
-      .mini{
-        margin-top:8px;
-        font-size:12px;
-        color: rgba(255,255,255,0.45);
-      }
+/* Footer */
+.footer {
+  margin-top: 64px;
+  padding: 28px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.72);
+  box-shadow: var(--shadow);
+
+  font-size: 13px;                 /* 🔽 글자 크기 살짝 축소 */
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.6);     /* 🔽 전체 톤 다운 */
+  text-align: center;
+}
+
+.footer .btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.footer .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.9);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;                 /* 버튼은 가독성 유지 */
+}
+
+.footer .btn.primary {
+  border-color: rgba(43,183,198,0.35);
+  background: linear-gradient(
+    90deg,
+    rgba(43,183,198,0.18),
+    rgba(107,92,255,0.14)
+  );
+}
+
+.footer .btn:hover {
+  filter: brightness(0.98);
+}
+
+.footer .mini {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.6;                    /* 가장 보조 정보 느낌 */
+}
+
     </style>
   </head>
 
   <body>
     <div class="wrap">
       <header class="hero">
-        <div class="kicker"><span class="dot"></span> kt cloud TECH UP · Cohort 1</div>
-        <h1>Stories We Built Together</h1>
+        <div class="kicker"><span class="dot"></span> kt cloud TECH UP · 1기</div>
+        <h1>KT cloud TECH UP 1기 운영 아카이브</h1>
         <p class="subtitle">
-          TECH UP 1기 운영의 순간들을 모아둔 현장 스케치 아카이브입니다.
+          1기에서 진행된 주요 운영 프로그램과 현장 중심 활동을 기록한 페이지입니다.
+          수치/성과 지표는 추후 업데이트하고, 지금은 “기록” 중심으로 먼저 정리합니다.
         </p>
       </header>
 
-      <!-- WARM UP -->
+      <!-- 1) Warm-up -->
       <section class="section">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">🚀 Warm-up Day</h2>
-            <p class="section-desc">과정 시작 전, 챌린저 간 연결감과 팀 분위기를 만드는 네트워킹</p>
-          </div>
-        </div>
+        <h2 class="section-title">🚀 WARM UP DAY</h2>
+        <p class="section-desc">과정 시작 전, 챌린저 간 연결감과 팀 분위기를 만드는 네트워킹</p>
 
-        <div class="carousel-wrap">
-          <button class="nav left" data-target="warmup" aria-label="scroll left">‹</button>
-          <button class="nav right" data-target="warmup" aria-label="scroll right">›</button>
+        <div class="marquee">
+          <div class="track">
+            <!-- 1회차 -->
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="웜업데이 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="웜업데이 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="웜업데이 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="웜업데이 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="웜업데이 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="웜업데이 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="웜업데이 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="웜업데이 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="웜업데이 9" /></div>
 
-          <div class="carousel" id="warmup">
-            <div class="card"><img src="images-warmup/warmup-1.jpg" alt="Warm-up 1" /></div>
-            <div class="card"><img src="images-warmup/warmup-2.jpg" alt="Warm-up 2" /></div>
-            <div class="card"><img src="images-warmup/warmup-3.jpg" alt="Warm-up 3" /></div>
-            <div class="card"><img src="images-warmup/warmup-4.jpg" alt="Warm-up 4" /></div>
-            <div class="card"><img src="images-warmup/warmup-5.jpg" alt="Warm-up 5" /></div>
-            <div class="card"><img src="images-warmup/warmup-6.jpg" alt="Warm-up 6" /></div>
-            <div class="card"><img src="images-warmup/warmup-7.jpg" alt="Warm-up 7" /></div>
-            <div class="card"><img src="images-warmup/warmup-8.jpg" alt="Warm-up 8" /></div>
-            <div class="card"><img src="images-warmup/warmup-9.jpg" alt="Warm-up 9" /></div>
+            <!-- 2회차(무한 루프용 복제) -->
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="" /></div>
           </div>
         </div>
       </section>
 
-      <!-- PRESENTATION -->
+      <!-- 2) Jeju Learncation (가운데 섹션) -->
       <section class="section">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">📌 Project Showcase & On-site Ops</h2>
-            <p class="section-desc">현장 회의실 대관 · 팀별 발표 · 피드백 세션 운영</p>
-          </div>
-        </div>
+        <h2 class="section-title">🌴 제주 런케이션</h2>
+        <p class="section-desc">제주에서의 몰입, 팀워크, 그리고 현장 기록</p>
 
-        <div class="carousel-wrap">
-          <button class="nav left" data-target="presentation" aria-label="scroll left">‹</button>
-          <button class="nav right" data-target="presentation" aria-label="scroll right">›</button>
+        <div class="marquee">
+          <div class="track">
+            <!-- 1회차 -->
+            <div class="card"><img src="images-learncation/learncation-1.jpg" alt="런케이션 1" /></div>
+            <div class="card"><img src="images-learncation/learncation-2.jpg" alt="런케이션 2" /></div>
+            <div class="card"><img src="images-learncation/learncation-3.jpg" alt="런케이션 3" /></div>
+            <div class="card"><img src="images-learncation/learncation-4.jpg" alt="런케이션 4" /></div>
+            <div class="card"><img src="images-learncation/learncation-5.jpg" alt="런케이션 5" /></div>
+            <div class="card"><img src="images-learncation/learncation-6.jpg" alt="런케이션 6" /></div>
+            <div class="card"><img src="images-learncation/learncation-7.jpg" alt="런케이션 7" /></div>
+            <div class="card"><img src="images-learncation/learncation-8.jpg" alt="런케이션 8" /></div>
+            <div class="card"><img src="images-learncation/learncation-9.jpg" alt="런케이션 9" /></div>
+            <div class="card"><img src="images-learncation/learncation-10.jpg" alt="런케이션 10" /></div>
+            <div class="card"><img src="images-learncation/learncation-11.jpg" alt="런케이션 11" /></div>
+            <div class="card"><img src="images-learncation/learncation-12.jpg" alt="런케이션 12" /></div>
+            <div class="card"><img src="images-learncation/learncation-13.jpg" alt="런케이션 13" /></div>
 
-          <div class="carousel" id="presentation">
-            <div class="card"><img src="images-presentation/presentation-1.jpg" alt="Presentation 1" /></div>
-            <div class="card"><img src="images-presentation/presentation-2.jpg" alt="Presentation 2" /></div>
-            <div class="card"><img src="images-presentation/presentation-3.jpg" alt="Presentation 3" /></div>
-            <div class="card"><img src="images-presentation/presentation-4.jpg" alt="Presentation 4" /></div>
+            <!-- 2회차 복제 -->
+            <div class="card"><img src="images-learncation/learncation-1.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-2.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-3.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-4.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-5.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-6.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-7.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-8.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-9.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-10.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-11.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-12.jpg" alt="" /></div>
+            <div class="card"><img src="images-learncation/learncation-13.jpg" alt="" /></div>
           </div>
         </div>
       </section>
 
-      <!-- LEARNCATION -->
+      <!-- 3) Presentation -->
       <section class="section">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">🌴 Jeju Learncation</h2>
-            <p class="section-desc">제주에서의 몰입, 팀워크, 그리고 현장 기록</p>
-          </div>
-        </div>
+        <h2 class="section-title">📌 팀 프로젝트 발표</h2>
+        <p class="section-desc">현장 회의실 대관 · 팀별 발표</p>
 
-        <div class="carousel-wrap">
-          <button class="nav left" data-target="learncation" aria-label="scroll left">‹</button>
-          <button class="nav right" data-target="learncation" aria-label="scroll right">›</button>
+        <div class="marquee">
+          <div class="track">
+            <!-- 1회차 -->
+            <div class="card"><img src="images-presentation/presentation-1.jpg" alt="프로젝트 발표 1" /></div>
+            <div class="card"><img src="images-presentation/presentation-2.jpg" alt="프로젝트 발표 2" /></div>
+            <div class="card"><img src="images-presentation/presentation-3.jpg" alt="프로젝트 발표 3" /></div>
+            <div class="card"><img src="images-presentation/presentation-4.jpg" alt="프로젝트 발표 4" /></div>
 
-          <div class="carousel" id="learncation">
-            <div class="card"><img src="images-learncation/learncation-1.jpg" alt="Learncation 1" /></div>
-            <div class="card"><img src="images-learncation/learncation-2.jpg" alt="Learncation 2" /></div>
-            <div class="card"><img src="images-learncation/learncation-3.jpg" alt="Learncation 3" /></div>
-            <div class="card"><img src="images-learncation/learncation-4.jpg" alt="Learncation 4" /></div>
-            <div class="card"><img src="images-learncation/learncation-5.jpg" alt="Learncation 5" /></div>
-            <div class="card"><img src="images-learncation/learncation-6.jpg" alt="Learncation 6" /></div>
-            <div class="card"><img src="images-learncation/learncation-7.jpg" alt="Learncation 7" /></div>
-            <div class="card"><img src="images-learncation/learncation-8.jpg" alt="Learncation 8" /></div>
-            <div class="card"><img src="images-learncation/learncation-9.jpg" alt="Learncation 9" /></div>
-            <div class="card"><img src="images-learncation/learncation-10.jpg" alt="Learncation 10" /></div>
-            <div class="card"><img src="images-learncation/learncation-11.jpg" alt="Learncation 11" /></div>
-            <div class="card"><img src="images-learncation/learncation-12.jpg" alt="Learncation 12" /></div>
-            <div class="card"><img src="images-learncation/learncation-13.jpg" alt="Learncation 13" /></div>
+            <!-- 2회차 복제 -->
+            <div class="card"><img src="images-presentation/presentation-1.jpg" alt="" /></div>
+            <div class="card"><img src="images-presentation/presentation-2.jpg" alt="" /></div>
+            <div class="card"><img src="images-presentation/presentation-3.jpg" alt="" /></div>
+            <div class="card"><img src="images-presentation/presentation-4.jpg" alt="" /></div>
           </div>
         </div>
       </section>
 
-      <!-- FOOTER -->
       <footer class="footer">
-    
+        <div>* 본 페이지는  TECH UP 1기 운영의 순간들을 모아둔 아카이브입니다. 2기 지원 관련 내용은 세부 하단의 모집 페이지를 확인해 주세요.</div>
+
         <div class="btns">
-          <!-- TODO: 아래 링크를 실제 URL로 교체 -->
+          <!-- TODO: 링크만 실제 주소로 교체 -->
           <a class="btn primary" href="https://kt-cloud-techup-4n6k5re2v-goorm.vercel.app/" target="_blank" rel="noopener">
             🚀 TECH UP 2기 모집 페이지
           </a>
-          <a class="btn" href="https://instagram.com/YOUR-INSTAGRAM" target="_blank" rel="noopener">
+          <a class="btn" href="https://www.instagram.com/ktcloud_tech_up/" target="_blank" rel="noopener">
             📷 Instagram
           </a>
         </div>
 
-        <div class="mini">
-          Made with GitHub + Netlify
-        </div>
+        <div class="mini">Made with GitHub + Netlify</div>
       </footer>
     </div>
-
-    <script>
-      // 버튼 클릭 시 가로 스크롤 이동
-      function scrollCarousel(id, dir){
-        const el = document.getElementById(id);
-        if(!el) return;
-        const amount = Math.round(el.clientWidth * 0.85);
-        el.scrollBy({ left: dir * amount, behavior: "smooth" });
-      }
-
-      document.querySelectorAll(".nav").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-target");
-          const dir = btn.classList.contains("right") ? 1 : -1;
-          scrollCarousel(id, dir);
-        });
-      });
-    </script>
   </body>
 </html>
