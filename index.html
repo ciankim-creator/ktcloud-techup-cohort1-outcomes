@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KT cloud TECH UP 1기 운영 아카이브</title>
+    <title>kt cloud TECH UP 1기 현장 스케치</title>
 
     <style>
       :root {
@@ -18,7 +18,37 @@
         --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
         --radius: 18px;
       }
+/* Video (WARM UP DAY) */
+.video-wrap {
+  margin: 14px 0 18px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+}
 
+.video-wrap iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
+.video-caption {
+  margin: 8px 12px 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.video-caption a {
+  color: var(--accent2);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.video-caption a:hover {
+  text-decoration: underline;
+}
       * { box-sizing: border-box; }
       body {
         margin: 0;
@@ -60,10 +90,11 @@
         background: linear-gradient(90deg, var(--accent), var(--accent2));
       }
       h1 {
-        margin: 14px 0 10px;
-        font-size: 34px;
+          margin: 14px 0 10px;
+        font-size: 34px;  
         line-height: 1.15;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.6px;
+        font-weight: 800; 
       }
       .subtitle {
         margin: 0;
@@ -145,9 +176,9 @@
   background: rgba(255,255,255,0.72);
   box-shadow: var(--shadow);
 
-  font-size: 13px;                 /* 🔽 글자 크기 살짝 축소 */
+  font-size: 13px;                
   line-height: 1.6;
-  color: rgba(15, 23, 42, 0.6);     /* 🔽 전체 톤 다운 */
+  color: rgba(15, 23, 42, 0.6);   
   text-align: center;
 }
 
@@ -169,7 +200,7 @@
   background: rgba(255,255,255,0.9);
   text-decoration: none;
   color: var(--text);
-  font-size: 14px;                 /* 버튼은 가독성 유지 */
+  font-size: 14px;                
 }
 
 .footer .btn.primary {
@@ -188,7 +219,7 @@
 .footer .mini {
   margin-top: 12px;
   font-size: 12px;
-  opacity: 0.6;                    /* 가장 보조 정보 느낌 */
+  opacity: 0.6;                
 }
 
     </style>
@@ -200,8 +231,8 @@
         <div class="kicker"><span class="dot"></span> kt cloud TECH UP · 1기</div>
         <h1>KT cloud TECH UP 1기 운영 아카이브</h1>
         <p class="subtitle">
-          1기에서 진행된 주요 운영 프로그램과 현장 중심 활동을 기록한 페이지입니다.
-          수치/성과 지표는 추후 업데이트하고, 지금은 “기록” 중심으로 먼저 정리합니다.
+          1기에서 함께했던 순간과 현장의 분위기를 기록한 아카이브입니다.
+
         </p>
       </header>
 
@@ -210,6 +241,22 @@
         <h2 class="section-title">🚀 WARM UP DAY</h2>
         <p class="section-desc">과정 시작 전, 챌린저 간 연결감과 팀 분위기를 만드는 네트워킹</p>
 
+        <div class="video-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/bo9IgI0sPpE"
+    title="TECH UP 1기 WARM UP DAY 현장 스케치"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <p class="video-caption">
+    🎥 WARM UP DAY 현장 스케치 영상 —
+    <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">
+      YouTube에서 보기
+    </a>
+  </p>
+</div>
         <div class="marquee">
           <div class="track">
             <!-- 1회차 -->
