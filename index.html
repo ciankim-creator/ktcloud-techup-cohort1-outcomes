@@ -120,10 +120,11 @@
         border: 1px solid rgba(239, 68, 68, 0.18);
         color: rgba(185, 28, 28, 0.95);
         background: rgba(239, 68, 68, 0.08);
+        letter-spacing: -0.1px;
         font-weight: 650;
       }
 
-      /* Video */
+      /* Video (WARM UP DAY) */
       .video-wrap {
         margin: 14px 0 18px;
         border-radius: 16px;
@@ -139,18 +140,30 @@
         display: block;
       }
 
-      /* ===============================
-         Auto marquee (FIXED VERSION)
-         =============================== */
+      .video-caption {
+        margin: 8px 12px 10px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .video-caption a {
+        color: var(--accent2);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .video-caption a:hover { text-decoration: underline; }
+
+      /* ✅ Auto marquee (해결1: marquee에 높이 부여해서 absolute 트랙이 떠버리지 않게 고정) */
       .marquee {
         position: relative;
         overflow: hidden;
         border-radius: 16px;
         border: 1px solid var(--line);
-        background: rgba(255,255,255,0.65);
+        background: rgba(255, 255, 255, 0.65);
 
-        /* ✅ 핵심: absolute track 때문에 높이 0 되는 문제 방지 */
-        height: 308px; /* card 280 + padding 14*2 */
+        /* 핵심: 카드 높이(280) + 패딩(14*2)=308 */
+        height: 308px;
       }
 
       .track {
@@ -164,9 +177,7 @@
         will-change: transform;
       }
 
-      .track.clone {
-        left: 100%;
-      }
+      .track.clone { left: 100%; }
 
       @keyframes scroll {
         from { transform: translateX(0); }
@@ -191,21 +202,31 @@
         cursor: zoom-in;
       }
 
-      /* Mobile */
+      /* 속도 프리셋 */
+      .marquee.fast .track { animation-duration: 30s; }
+      .marquee.normal .track { animation-duration: 45s; }
+      .marquee.slow .track { animation-duration: 65s; }
+
       @media (max-width: 520px) {
         h1 { font-size: 34px; }
         .section-title { font-size: 22px; }
         .card { width: 78vw; height: 240px; }
-        .marquee { height: 268px; } /* 240 + 28 */
+        .marquee { height: 268px; } /* 240 + 14*2 */
       }
 
+      /* 모바일에서는 자동 스크롤 중지 + 높이 자동 */
       @media (max-width: 768px) {
+        .marquee {
+          height: auto;
+          overflow-x: auto;
+        }
+
         .track {
           animation: none;
           position: relative;
         }
+
         .track.clone { display: none; }
-        .marquee { overflow-x: auto; }
       }
 
       /* Footer */
@@ -217,8 +238,48 @@
         background: rgba(255, 255, 255, 0.72);
         box-shadow: var(--shadow);
         font-size: 13px;
+        line-height: 1.6;
         color: rgba(15, 23, 42, 0.6);
         text-align: center;
+      }
+
+      .footer .btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 16px 0;
+      }
+
+      .footer .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .footer .btn.primary {
+        border-color: rgba(43, 183, 198, 0.35);
+        background: linear-gradient(
+          90deg,
+          rgba(43, 183, 198, 0.18),
+          rgba(107, 92, 255, 0.14)
+        );
+      }
+
+      .footer .btn:hover { filter: brightness(0.98); }
+
+      .footer .mini {
+        margin-top: 12px;
+        font-size: 12px;
+        opacity: 0.6;
       }
 
       /* Lightbox */
@@ -237,6 +298,7 @@
         max-width: 92vw;
         max-height: 88vh;
         border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
         background: #fff;
       }
     </style>
@@ -244,5 +306,276 @@
 
   <body>
     <div class="wrap">
-      <!-- 🔽 이하 HTML 구조는 네가 쓰던 그대로 유지 -->
-      <!-- (WARM UP DAY / 각 섹션 marquee 구조 전부 정상 작동) -->
+      <header class="hero">
+        <div class="kicker"><span class="dot"></span> kt cloud TECH UP · 1기</div>
+        <h1>kt cloud TECH UP 1기 현장 스케치</h1>
+        <p class="subtitle">1기에서 함께했던 순간과 현장의 분위기를 기록한 아카이브입니다.</p>
+      </header>
+
+      <!-- 0) WARM UP DAY -->
+      <section class="section">
+        <h2 class="section-title">🚀 WARM UP DAY</h2>
+        <p class="section-desc">과정 시작 전, 챌린저 간 연결감과 팀 분위기를 만드는 네트워킹</p>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/bo9IgI0sPpE"
+            title="TECH UP 1기 WARM UP DAY 현장 스케치"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+
+          <p class="video-caption">
+            🎥 WARM UP DAY 현장 스케치 영상 —
+            <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">YouTube에서 보기</a>
+          </p>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1) 이론 강의 -->
+      <section class="section">
+        <h2 class="section-title">📚 이론 강의</h2>
+        <p class="section-desc">기초부터 실무 감각까지 이어지는 커리큘럼, 만들면서 배우고 함께 부딪치며 성장하는 시간</p>
+
+        <div class="tags">
+          <span class="tag">실습 중심</span>
+          <span class="tag">기초 설계</span>
+          <span class="tag">문제 해결</span>
+          <span class="tag">코드 이해</span>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2) 해커톤 -->
+      <section class="section">
+        <h2 class="section-title">⚡ 해커톤</h2>
+        <p class="section-desc">짧은 시간, 가장 뜨겁게. 팀이 하나로 달리는 스프린트</p>
+
+        <div class="tags">
+          <span class="tag">아이디어</span>
+          <span class="tag">스프린트</span>
+          <span class="tag">협업</span>
+          <span class="tag">피치</span>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-hackathon/hackathon-1.jpg" alt="해커톤 1" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-2.png" alt="해커톤 2" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-3.png" alt="해커톤 3" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-4.jpg" alt="해커톤 4" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-5.jpg" alt="해커톤 5" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-hackathon/hackathon-1.jpg" alt="해커톤 1" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-2.png" alt="해커톤 2" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-3.png" alt="해커톤 3" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-4.jpg" alt="해커톤 4" /></div>
+            <div class="card"><img src="images-hackathon/hackathon-5.jpg" alt="해커톤 5" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3) 특강 & 멘토링 -->
+      <section class="section">
+        <h2 class="section-title">🎤 kt cloud 특강 & 현직자 멘토링</h2>
+        <p class="section-desc">현업 인사이트로 방향을 잡고, 피드백으로 밀도를 올리는 시간</p>
+
+        <div class="tags">
+          <span class="tag">현업 인사이트</span>
+          <span class="tag">피드백</span>
+          <span class="tag">커리어 시야</span>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-mentoring/mentoring-1.png" alt="멘토링 1" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-2.png" alt="멘토링 2" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-3.png" alt="멘토링 3" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-4.png" alt="멘토링 4" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-5.png" alt="멘토링 5" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-mentoring/mentoring-1.png" alt="멘토링 1" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-2.png" alt="멘토링 2" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-3.png" alt="멘토링 3" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-4.png" alt="멘토링 4" /></div>
+            <div class="card"><img src="images-mentoring/mentoring-5.png" alt="멘토링 5" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4) 실무통합 프로젝트 -->
+      <section class="section">
+        <h2 class="section-title">🛰️ 실무통합 프로젝트</h2>
+        <p class="section-desc">대규모 협업으로 조직 문화까지 경험하는 메인 프로젝트</p>
+
+        <div class="tags">
+          <span class="tag">실무 기준</span>
+          <span class="tag">대규모 협업</span>
+          <span class="tag">조직 문화</span>
+          <span class="tag">의사결정</span>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5) 오프라인 회의실 제공 -->
+      <section class="section">
+        <h2 class="section-title">🏢 오프라인 회의실 제공</h2>
+        <p class="section-desc">팀 프로젝트 준비와 협업을 위해, 오프라인 회의실 환경을 지원</p>
+
+        <div class="tags">
+          <span class="tag">회의실 대여</span>
+          <span class="tag">팀 회의</span>
+          <span class="tag">커뮤니케이션</span>
+        </div>
+
+        <div class="marquee normal">
+          <div class="track">
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
+          </div>
+
+          <div class="track clone">
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>
+          이 모든 과정은 TECH UP 1기에서 실제로 진행되었습니다.<br />
+          같은 여정을 함께하고 싶다면, TECH UP 2기에 지원해 보세요!
+        </div>
+
+        <div class="btns">
+          <a class="btn primary" href="https://kt-cloud-techup-4n6k5re2v-goorm.vercel.app/" target="_blank" rel="noopener">
+            🚀 TECH UP 2기 모집 페이지
+          </a>
+          <a class="btn" href="https://www.instagram.com/ktcloud_tech_up/" target="_blank" rel="noopener">
+            📷 Instagram
+          </a>
+        </div>
+
+        <div class="mini">Made with GitHub + Netlify</div>
+      </footer>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <img id="lightbox-img" alt="확대 이미지" />
+    </div>
+
+    <script>
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      const images = Array.from(document.querySelectorAll(".card img"));
+      let currentIndex = -1;
+
+      images.forEach((img, index) => {
+        img.addEventListener("click", (e) => {
+          e.stopPropagation(); // 라이트박스 배경 클릭과 분리
+          currentIndex = index;
+          openLightbox();
+        });
+      });
+
+      function openLightbox() {
+        lightboxImg.src = images[currentIndex].src;
+        lightbox.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.style.display = "none";
+        lightboxImg.src = "";
+        document.body.style.overflow = "";
+        currentIndex = -1;
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImg.src = images[currentIndex].src;
+      }
+
+      lightbox.addEventListener("click", () => closeLightbox());
+
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.style.display !== "flex") return;
+
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowRight") showNext();
+        if (e.key === "ArrowLeft") showPrev();
+      });
+    </script>
+  </body>
+</html>
