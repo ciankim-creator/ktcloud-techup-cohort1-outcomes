@@ -124,7 +124,7 @@
         font-weight: 650;
       }
 
-      /* Video (WARM UP DAY) */
+      /* Video */
       .video-wrap {
         margin: 14px 0 18px;
         border-radius: 16px;
@@ -154,7 +154,7 @@
 
       .video-caption a:hover { text-decoration: underline; }
 
-      /* ✅ Auto marquee (해결1: marquee에 높이 부여해서 absolute 트랙이 떠버리지 않게 고정) */
+      /* ✅ Auto marquee (겹침 해결 버전) */
       .marquee {
         position: relative;
         overflow: hidden;
@@ -162,8 +162,8 @@
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.65);
 
-        /* 핵심: 카드 높이(280) + 패딩(14*2)=308 */
-        height: 308px;
+        /* ✅ 핵심: 높이를 확보해서 아래 섹션과 겹치지 않게 */
+        height: 308px; /* 280(card) + 14(top) + 14(bottom) */
       }
 
       .track {
@@ -202,30 +202,17 @@
         cursor: zoom-in;
       }
 
-      /* 속도 프리셋 */
-      .marquee.fast .track { animation-duration: 30s; }
-      .marquee.normal .track { animation-duration: 45s; }
-      .marquee.slow .track { animation-duration: 65s; }
-
       @media (max-width: 520px) {
         h1 { font-size: 34px; }
         .section-title { font-size: 22px; }
         .card { width: 78vw; height: 240px; }
-        .marquee { height: 268px; } /* 240 + 14*2 */
+        .marquee { height: 268px; } /* 240 + 14 + 14 */
       }
 
-      /* 모바일에서는 자동 스크롤 중지 + 높이 자동 */
+      /* 모바일에서는 자동 스크롤 중지 */
       @media (max-width: 768px) {
-        .marquee {
-          height: auto;
-          overflow-x: auto;
-        }
-
-        .track {
-          animation: none;
-          position: relative;
-        }
-
+        .marquee { height: auto; overflow-x: auto; }
+        .track { animation: none; position: relative; }
         .track.clone { display: none; }
       }
 
@@ -282,6 +269,11 @@
         opacity: 0.6;
       }
 
+      /* 속도 프리셋 */
+      .marquee.fast .track { animation-duration: 30s; }
+      .marquee.normal .track { animation-duration: 45s; }
+      .marquee.slow .track { animation-duration: 65s; }
+
       /* Lightbox */
       .lightbox {
         position: fixed;
@@ -333,34 +325,34 @@
 
         <div class="marquee normal">
           <div class="track">
-            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
-            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
-            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
-            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
-            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
-            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
-            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
-            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
-            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="Warmup 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="Warmup 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="Warmup 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="Warmup 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="Warmup 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="Warmup 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="Warmup 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="Warmup 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="Warmup 9" /></div>
           </div>
 
           <div class="track clone">
-            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
-            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
-            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
-            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
-            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
-            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
-            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
-            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
-            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="Warmup 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="Warmup 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="Warmup 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="Warmup 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="Warmup 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="Warmup 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="Warmup 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="Warmup 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="Warmup 9" /></div>
           </div>
         </div>
       </section>
 
-      <!-- 1) 이론 강의 및 프로젝트 -->
+      <!-- 1) 이론 강의 -->
       <section class="section">
-        <h2 class="section-title">📚 이론 강의 및 프로젝트</h2>
+        <h2 class="section-title">📚 이론 강의</h2>
         <p class="section-desc">기초부터 실무 감각까지 이어지는 커리큘럼, 만들면서 배우고 함께 부딪치며 성장하는 시간</p>
 
         <div class="tags">
@@ -372,15 +364,15 @@
 
         <div class="marquee normal">
           <div class="track">
-            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 및 프로젝트 1" /></div>
-            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 및 프로젝트 2" /></div>
-            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 및 프로젝트 3" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
           </div>
 
           <div class="track clone">
-            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 및 프로젝트 1" /></div>
-            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 및 프로젝트 2" /></div>
-            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 및 프로젝트 3" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
+            <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
           </div>
         </div>
       </section>
@@ -460,19 +452,19 @@
 
         <div class="marquee normal">
           <div class="track">
-            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
-            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
-            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
-            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
-            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 5" /></div>
           </div>
 
           <div class="track clone">
-            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
-            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
-            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
-            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
-            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 5" /></div>
           </div>
         </div>
       </section>
@@ -490,17 +482,17 @@
 
         <div class="marquee normal">
           <div class="track">
-            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="회의실 4" /></div>
           </div>
 
           <div class="track clone">
-            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="회의실 4" /></div>
           </div>
         </div>
       </section>
@@ -512,7 +504,7 @@
         </div>
 
         <div class="btns">
-          <a class="btn primary" href="https://ktcloud-techup.com/" target="_blank" rel="noopener">
+          <a class="btn primary" href="https://kt-cloud-techup-4n6k5re2v-goorm.vercel.app/" target="_blank" rel="noopener">
             🚀 TECH UP 2기 모집 페이지
           </a>
           <a class="btn" href="https://www.instagram.com/ktcloud_tech_up/" target="_blank" rel="noopener">
@@ -537,8 +529,7 @@
       let currentIndex = -1;
 
       images.forEach((img, index) => {
-        img.addEventListener("click", (e) => {
-          e.stopPropagation(); // 라이트박스 배경 클릭과 분리
+        img.addEventListener("click", () => {
           currentIndex = index;
           openLightbox();
         });
@@ -571,7 +562,6 @@
 
       document.addEventListener("keydown", (e) => {
         if (lightbox.style.display !== "flex") return;
-
         if (e.key === "Escape") closeLightbox();
         if (e.key === "ArrowRight") showNext();
         if (e.key === "ArrowLeft") showPrev();
