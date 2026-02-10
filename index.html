@@ -17,6 +17,12 @@
         --accent2: #6b5cff;
         --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
         --radius: 18px;
+
+        /* 카드 크기 상수화 (마퀴 높이 계산 안정) */
+        --card-w: 420px;
+        --card-h: 280px;
+        --marquee-pad: 14px;
+        --marquee-gap: 14px;
       }
 
       * { box-sizing: border-box; }
@@ -124,7 +130,7 @@
         font-weight: 650;
       }
 
-      /* Video */
+      /* Video (WARM UP DAY) */
       .video-wrap {
         margin: 14px 0 18px;
         border-radius: 16px;
@@ -154,7 +160,7 @@
 
       .video-caption a:hover { text-decoration: underline; }
 
-      /* ✅ Auto marquee (겹침 해결 버전) */
+      /* ✅ FIX: Marquee (absolute 제거 + 높이 고정 + 겹침 방지) */
       .marquee {
         position: relative;
         overflow: hidden;
@@ -162,32 +168,34 @@
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.65);
 
-        /* ✅ 핵심: 높이를 확보해서 아래 섹션과 겹치지 않게 */
-        height: 308px; /* 280(card) + 14(top) + 14(bottom) */
+        /* 내용이 흐름에 포함되도록 높이 확보 */
+        min-height: calc(var(--card-h) + (var(--marquee-pad) * 2));
       }
 
-      .track {
+      .marquee-inner {
         display: flex;
-        gap: 14px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 14px;
-        animation: scroll 45s linear infinite;
+        gap: var(--marquee-gap);
+        padding: var(--marquee-pad);
+        width: max-content;
         will-change: transform;
+
+        animation: marquee-scroll 45s linear infinite;
       }
 
-      .track.clone { left: 100%; }
+      /* 속도 프리셋 */
+      .marquee.fast  .marquee-inner { animation-duration: 30s; }
+      .marquee.normal .marquee-inner { animation-duration: 45s; }
+      .marquee.slow  .marquee-inner { animation-duration: 65s; }
 
-      @keyframes scroll {
+      @keyframes marquee-scroll {
         from { transform: translateX(0); }
-        to   { transform: translateX(-100%); }
+        to   { transform: translateX(-50%); }
       }
 
       .card {
         flex: 0 0 auto;
-        width: 420px;
-        height: 280px;
+        width: var(--card-w);
+        height: var(--card-h);
         border-radius: 16px;
         overflow: hidden;
         box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
@@ -202,18 +210,16 @@
         cursor: zoom-in;
       }
 
+      /* 모바일: 자동 스크롤 제거 + 가로 스크롤 */
+      @media (max-width: 768px) {
+        .marquee { overflow-x: auto; }
+        .marquee-inner { animation: none; width: max-content; }
+      }
+
       @media (max-width: 520px) {
         h1 { font-size: 34px; }
         .section-title { font-size: 22px; }
-        .card { width: 78vw; height: 240px; }
-        .marquee { height: 268px; } /* 240 + 14 + 14 */
-      }
-
-      /* 모바일에서는 자동 스크롤 중지 */
-      @media (max-width: 768px) {
-        .marquee { height: auto; overflow-x: auto; }
-        .track { animation: none; position: relative; }
-        .track.clone { display: none; }
+        :root { --card-w: 78vw; --card-h: 240px; }
       }
 
       /* Footer */
@@ -262,17 +268,7 @@
       }
 
       .footer .btn:hover { filter: brightness(0.98); }
-
-      .footer .mini {
-        margin-top: 12px;
-        font-size: 12px;
-        opacity: 0.6;
-      }
-
-      /* 속도 프리셋 */
-      .marquee.fast .track { animation-duration: 30s; }
-      .marquee.normal .track { animation-duration: 45s; }
-      .marquee.slow .track { animation-duration: 65s; }
+      .footer .mini { margin-top: 12px; font-size: 12px; opacity: 0.6; }
 
       /* Lightbox */
       .lightbox {
@@ -319,33 +315,35 @@
 
           <p class="video-caption">
             🎥 WARM UP DAY 현장 스케치 영상 —
-            <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">YouTube에서 보기</a>
+            <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">
+              YouTube에서 보기
+            </a>
           </p>
         </div>
 
         <div class="marquee normal">
-          <div class="track">
-            <div class="card"><img src="images-warmup/warmup-1.png" alt="Warmup 1" /></div>
-            <div class="card"><img src="images-warmup/warmup-2.png" alt="Warmup 2" /></div>
-            <div class="card"><img src="images-warmup/warmup-3.png" alt="Warmup 3" /></div>
-            <div class="card"><img src="images-warmup/warmup-4.png" alt="Warmup 4" /></div>
-            <div class="card"><img src="images-warmup/warmup-5.png" alt="Warmup 5" /></div>
-            <div class="card"><img src="images-warmup/warmup-6.png" alt="Warmup 6" /></div>
-            <div class="card"><img src="images-warmup/warmup-7.png" alt="Warmup 7" /></div>
-            <div class="card"><img src="images-warmup/warmup-8.png" alt="Warmup 8" /></div>
-            <div class="card"><img src="images-warmup/warmup-9.png" alt="Warmup 9" /></div>
-          </div>
+          <div class="marquee-inner">
+            <!-- set A -->
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
 
-          <div class="track clone">
-            <div class="card"><img src="images-warmup/warmup-1.png" alt="Warmup 1" /></div>
-            <div class="card"><img src="images-warmup/warmup-2.png" alt="Warmup 2" /></div>
-            <div class="card"><img src="images-warmup/warmup-3.png" alt="Warmup 3" /></div>
-            <div class="card"><img src="images-warmup/warmup-4.png" alt="Warmup 4" /></div>
-            <div class="card"><img src="images-warmup/warmup-5.png" alt="Warmup 5" /></div>
-            <div class="card"><img src="images-warmup/warmup-6.png" alt="Warmup 6" /></div>
-            <div class="card"><img src="images-warmup/warmup-7.png" alt="Warmup 7" /></div>
-            <div class="card"><img src="images-warmup/warmup-8.png" alt="Warmup 8" /></div>
-            <div class="card"><img src="images-warmup/warmup-9.png" alt="Warmup 9" /></div>
+            <!-- set B (동일 복제) -->
+            <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
+            <div class="card"><img src="images-warmup/warmup-2.png" alt="WARM UP 2" /></div>
+            <div class="card"><img src="images-warmup/warmup-3.png" alt="WARM UP 3" /></div>
+            <div class="card"><img src="images-warmup/warmup-4.png" alt="WARM UP 4" /></div>
+            <div class="card"><img src="images-warmup/warmup-5.png" alt="WARM UP 5" /></div>
+            <div class="card"><img src="images-warmup/warmup-6.png" alt="WARM UP 6" /></div>
+            <div class="card"><img src="images-warmup/warmup-7.png" alt="WARM UP 7" /></div>
+            <div class="card"><img src="images-warmup/warmup-8.png" alt="WARM UP 8" /></div>
+            <div class="card"><img src="images-warmup/warmup-9.png" alt="WARM UP 9" /></div>
           </div>
         </div>
       </section>
@@ -363,13 +361,11 @@
         </div>
 
         <div class="marquee normal">
-          <div class="track">
+          <div class="marquee-inner">
             <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
             <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
             <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
-          </div>
 
-          <div class="track clone">
             <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
             <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
             <div class="card"><img src="images-lecture-project/lecture-project-3.jpg" alt="이론 강의 3" /></div>
@@ -390,15 +386,13 @@
         </div>
 
         <div class="marquee normal">
-          <div class="track">
+          <div class="marquee-inner">
             <div class="card"><img src="images-hackathon/hackathon-1.jpg" alt="해커톤 1" /></div>
             <div class="card"><img src="images-hackathon/hackathon-2.png" alt="해커톤 2" /></div>
             <div class="card"><img src="images-hackathon/hackathon-3.png" alt="해커톤 3" /></div>
             <div class="card"><img src="images-hackathon/hackathon-4.jpg" alt="해커톤 4" /></div>
             <div class="card"><img src="images-hackathon/hackathon-5.jpg" alt="해커톤 5" /></div>
-          </div>
 
-          <div class="track clone">
             <div class="card"><img src="images-hackathon/hackathon-1.jpg" alt="해커톤 1" /></div>
             <div class="card"><img src="images-hackathon/hackathon-2.png" alt="해커톤 2" /></div>
             <div class="card"><img src="images-hackathon/hackathon-3.png" alt="해커톤 3" /></div>
@@ -420,15 +414,13 @@
         </div>
 
         <div class="marquee normal">
-          <div class="track">
+          <div class="marquee-inner">
             <div class="card"><img src="images-mentoring/mentoring-1.png" alt="멘토링 1" /></div>
             <div class="card"><img src="images-mentoring/mentoring-2.png" alt="멘토링 2" /></div>
             <div class="card"><img src="images-mentoring/mentoring-3.png" alt="멘토링 3" /></div>
             <div class="card"><img src="images-mentoring/mentoring-4.png" alt="멘토링 4" /></div>
             <div class="card"><img src="images-mentoring/mentoring-5.png" alt="멘토링 5" /></div>
-          </div>
 
-          <div class="track clone">
             <div class="card"><img src="images-mentoring/mentoring-1.png" alt="멘토링 1" /></div>
             <div class="card"><img src="images-mentoring/mentoring-2.png" alt="멘토링 2" /></div>
             <div class="card"><img src="images-mentoring/mentoring-3.png" alt="멘토링 3" /></div>
@@ -451,20 +443,18 @@
         </div>
 
         <div class="marquee normal">
-          <div class="track">
-            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 1" /></div>
-            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 2" /></div>
-            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 3" /></div>
-            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 4" /></div>
-            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 5" /></div>
-          </div>
+          <div class="marquee-inner">
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
 
-          <div class="track clone">
-            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 1" /></div>
-            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 2" /></div>
-            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 3" /></div>
-            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 4" /></div>
-            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 5" /></div>
+            <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
+            <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
+            <div class="card"><img src="images-integration/integration-3.png" alt="실무통합 프로젝트 3" /></div>
+            <div class="card"><img src="images-integration/integration-4.png" alt="실무통합 프로젝트 4" /></div>
+            <div class="card"><img src="images-integration/integration-5.png" alt="실무통합 프로젝트 5" /></div>
           </div>
         </div>
       </section>
@@ -481,18 +471,16 @@
         </div>
 
         <div class="marquee normal">
-          <div class="track">
-            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="회의실 1" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="회의실 2" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="회의실 3" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="회의실 4" /></div>
-          </div>
+          <div class="marquee-inner">
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
 
-          <div class="track clone">
-            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="회의실 1" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="회의실 2" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="회의실 3" /></div>
-            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="회의실 4" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-1.jpg" alt="오프라인 회의실 1" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-2.jpg" alt="오프라인 회의실 2" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-3.jpg" alt="오프라인 회의실 3" /></div>
+            <div class="card"><img src="images-meeting-room/meeting-room-4.jpg" alt="오프라인 회의실 4" /></div>
           </div>
         </div>
       </section>
@@ -529,7 +517,8 @@
       let currentIndex = -1;
 
       images.forEach((img, index) => {
-        img.addEventListener("click", () => {
+        img.addEventListener("click", (e) => {
+          e.stopPropagation();
           currentIndex = index;
           openLightbox();
         });
@@ -558,7 +547,7 @@
         lightboxImg.src = images[currentIndex].src;
       }
 
-      lightbox.addEventListener("click", () => closeLightbox());
+      lightbox.addEventListener("click", closeLightbox);
 
       document.addEventListener("keydown", (e) => {
         if (lightbox.style.display !== "flex") return;
