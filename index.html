@@ -18,16 +18,15 @@
         --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
         --radius: 18px;
 
-        /* 카드 크기 상수화 (마퀴 높이 계산 안정) */
+        /* 카드 크기 상수화 */
         --card-w: 420px;
         --card-h: 280px;
         --marquee-pad: 14px;
         --marquee-gap: 14px;
-      }
 
-        --marquee-speed: 45s; /* 여기만 바꾸면 전부 변경 */
+        /* ✅ 여기만 바꾸면 모든 섹션 속도 통일 */
+        --marquee-speed: 45s;
       }
-
 
       * { box-sizing: border-box; }
 
@@ -134,7 +133,7 @@
         font-weight: 650;
       }
 
-      /* Video (WARM UP DAY) */
+      /* Video */
       .video-wrap {
         margin: 14px 0 18px;
         border-radius: 16px;
@@ -164,15 +163,13 @@
 
       .video-caption a:hover { text-decoration: underline; }
 
-      /* ✅ FIX: Marquee (absolute 제거 + 높이 고정 + 겹침 방지) */
+      /* ✅ Marquee */
       .marquee {
         position: relative;
         overflow: hidden;
         border-radius: 16px;
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.65);
-
-        /* 내용이 흐름에 포함되도록 높이 확보 */
         min-height: calc(var(--card-h) + (var(--marquee-pad) * 2));
       }
 
@@ -182,8 +179,6 @@
         padding: var(--marquee-pad);
         width: max-content;
         will-change: transform;
-
-       /* ✅ 변수로 속도 통일 */
         animation: marquee-scroll var(--marquee-speed) linear infinite;
       }
 
@@ -199,15 +194,14 @@
         border-radius: 16px;
         overflow: hidden;
         box-shadow: 0 10px 22px rgba(15, 23, 42, 0.10);
-        background: #fff;
+        background: transparent; /* ✅ 흰 바탕 느낌 최소화 */
       }
 
-      /* ✅ 전체가 보이도록 contain */
+      /* ✅ 공백 없이 꽉 차게 + 모서리 둥글게 (카드에서 overflow hidden) */
       .card img {
         width: 100%;
         height: 100%;
-        object-fit: contain;   /* 여기! */
-        background: #fff;      /* 여백 배경 */
+        object-fit: cover; /* ✅ 핵심: 꽉 차게 */
         display: block;
         cursor: zoom-in;
       }
@@ -317,13 +311,11 @@
 
           <p class="video-caption">
             🎥 WARM UP DAY 현장 스케치 영상 —
-            <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">
-              YouTube에서 보기
-            </a>
+            <a href="https://www.youtube.com/watch?v=bo9IgI0sPpE" target="_blank" rel="noopener">YouTube에서 보기</a>
           </p>
         </div>
 
-        <div class="marquee normal">
+        <div class="marquee">
           <div class="marquee-inner">
             <!-- set A -->
             <div class="card"><img src="images-warmup/warmup-1.png" alt="WARM UP 1" /></div>
@@ -362,7 +354,7 @@
           <span class="tag">코드 이해</span>
         </div>
 
-        <div class="marquee normal">
+        <div class="marquee">
           <div class="marquee-inner">
             <div class="card"><img src="images-lecture-project/lecture-project-1.jpg" alt="이론 강의 1" /></div>
             <div class="card"><img src="images-lecture-project/lecture-project-2.jpg" alt="이론 강의 2" /></div>
@@ -387,7 +379,7 @@
           <span class="tag">피치</span>
         </div>
 
-        <div class="marquee normal">
+        <div class="marquee">
           <div class="marquee-inner">
             <div class="card"><img src="images-hackathon/hackathon-1.jpg" alt="해커톤 1" /></div>
             <div class="card"><img src="images-hackathon/hackathon-2.png" alt="해커톤 2" /></div>
@@ -415,7 +407,7 @@
           <span class="tag">커리어 시야</span>
         </div>
 
-        <div class="marquee normal">
+        <div class="marquee">
           <div class="marquee-inner">
             <div class="card"><img src="images-mentoring/mentoring-1.png" alt="멘토링 1" /></div>
             <div class="card"><img src="images-mentoring/mentoring-2.png" alt="멘토링 2" /></div>
@@ -444,7 +436,7 @@
           <span class="tag">의사결정</span>
         </div>
 
-        <div class="marquee normal">
+        <div class="marquee">
           <div class="marquee-inner">
             <div class="card"><img src="images-integration/integration-1.png" alt="실무통합 프로젝트 1" /></div>
             <div class="card"><img src="images-integration/integration-2.png" alt="실무통합 프로젝트 2" /></div>
@@ -468,12 +460,8 @@
         </div>
 
         <div class="btns">
-          <a class="btn primary" href="https://ktcloud-techup.com/" target="_blank" rel="noopener">
-            🚀 TECH UP 2기 모집 페이지
-          </a>
-          <a class="btn" href="https://www.instagram.com/ktcloud_tech_up/" target="_blank" rel="noopener">
-            📷 Instagram
-          </a>
+          <a class="btn primary" href="https://ktcloud-techup.com/" target="_blank" rel="noopener">🚀 TECH UP 2기 모집 페이지</a>
+          <a class="btn" href="https://www.instagram.com/ktcloud_tech_up/" target="_blank" rel="noopener">📷 Instagram</a>
         </div>
 
         <div class="mini">Made with GitHub + Netlify</div>
